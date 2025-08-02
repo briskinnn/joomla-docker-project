@@ -1,0 +1,10 @@
+# Ignore Docker volumes
+volumes/
+
+# Ignore OS/system junk
+.DS_Store
+Thumbs.db
+
+# Ignore node_modules or vendor folders if present
+node_modules/
+vendor/
