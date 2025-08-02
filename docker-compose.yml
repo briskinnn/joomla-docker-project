@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  joomla:
+    image: joomla
+    ports:
+      - "8000:80"
+    volumes:
+      - ./volumes/joomla_data:/var/www/html
+    environment:
+      JOOMLA_DB_HOST: db
+      JOOMLA_DB_USER: root
+      JOOMLA_DB_PASSWORD: example
+      JOOMLA_DB_NAME: joomla
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: joomla
+    volumes:
+      - ./volumes/mysql_data:/var/lib/mysql
